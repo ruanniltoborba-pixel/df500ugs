@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroExcellence Paraná | Consultoria e Alta Produtividade Agrícola</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="accessibility-bar" role="complementary" aria-label="Controles de Acessibilidade">
+        <div class="container accessibility-container">
+            <button id="btn-contrast" class="btn-acc" aria-label="Alternar Alto Contraste">Alto Contraste</button>
+            <div class="font-controls">
+                <button id="btn-font-decrease" class="btn-acc" aria-label="Diminuir tamanho do texto">A-</button>
+                <button id="btn-font-increase" class="btn-acc" aria-label="Aumentar tamanho do texto">A+</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="container">
+            <nav class="nav-bar">
+                <div class="logo">Agro<span>Paraná</span></div>
+                <a href="#contato" class="btn btn-secondary">Falar com Especialista</a>
+            </nav>
+            
+            <div class="hero-content">
+                <span class="badge">Liderança no Campo Paranaense</span>
+                <h1>Transforme a produtividade da sua lavoura com tecnologia de ponta</h1>
+                <p>Consultoria especializada para produtores do Paraná. Maximize seu rendimento por hectare utilizando inteligência de dados, manejo de precisão e a força do maior polo agrícola do país.</p>
+                <div class="hero-cta-group">
+                    <a href="#contato" class="btn btn-primary">Diagnóstico Gratuito da Terra</a>
+                    <a href="#beneficios" class="btn btn-link">Conhecer Soluções &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-card">
+                <h2>+150k</h2>
+                <p>Hectares Monitorados no PR</p>
+            </div>
+            <div class="stat-card">
+                <h2>28%</h2>
+                <p>Média de Aumento de Produtividade</p>
+            </div>
+            <div class="stat-card">
+                <h2>12</h2>
+                <p>Anos de Tradição e Inovação</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios" class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Soluções Desenhadas para o Solo do Paraná</h2>
+                <p>Do Arenito Caiuá à Terra Roxa: estratégias personalizadas para o clima e relevo da nossa região.</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌱</div>
+                    <h3>Agricultura de Precisão</h3>
+                    <p>Mapeamento completo de nutrientes e aplicação em taxa variável para máxima economia de insumos.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Gestão de Safra Baseada em Dados</h3>
+                    <p>Previsibilidade financeira, controle de custos operacionais e relatórios de viabilidade em tempo real.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Proteção e Manejo Biológico</h3>
+                    <p>Combate eficiente a pragas sazonais da região sul com as tecnologias mais sustentáveis do mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Quem Confia na AgroParaná</h2>
+                <p>Resultados reais de produtores que transformaram suas colheitas.</p>
+            </div>
+            
+            <div class="carousel-container">
+                <div id="carousel-track" class="carousel-track">
+                    </div>
+                <div class="carousel-controls">
+                    <button id="carousel-prev" class="btn-carousel" aria-label="Depoimento anterior">&larr;</button>
+                    <button id="carousel-next" class="btn-carousel" aria-label="Próximo depoimento">&rarr;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas sobre nossa atuação no agronegócio paranaense.</p>
+            </div>
+            
+            <div id="faq-accordion" class="accordion-container">
+                </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact-section">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <h2>Pronto para liderar a próxima safra?</h2>
+                <p>Agende uma consultoria inicial sem custos. Nossos engenheiros agrônomos analisam o histórico da sua área e desenham o plano de expansão ideal.</p>
+                <div class="contact-urgency">
+                    <p><strong>⚠️ Atenção:</strong> Vagas limitadas para o acompanhamento técnico da safra atual na região de Cascavel, Maringá e Londrina.</p>
+                </div>
+            </div>
+            
+            <div class="contact-form-wrapper">
+                <form id="lead-form" action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required placeholder="Ex: Roberto Silva">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">WhatsApp/Telefone</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Ex: (44) 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Cidade/Região no PR</label>
+                        <input type="text" id="location" name="location" required placeholder="Ex: Toledo - PR">
+                    </div>
+                    <div class="form-group">
+                        <label for="hectares">Tamanho da Propriedade (Hectares)</label>
+                        <input type="number" id="hectares" name="hectares" required placeholder="Ex: 250">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Garantir Meu Diagnóstico Gratuito</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 AgroParaná Consultoria Agrícola Ltda. Todos os direitos reservados.</p>
+            <p>Desenvolvido para máxima conversão no agronegócio.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
