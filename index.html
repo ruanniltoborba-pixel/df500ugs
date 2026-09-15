@@ -3,155 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroExcellence Paraná | Consultoria e Alta Produtividade Agrícola</title>
+    <title>InkGallery - Estúdio de Tatuagem Exclusivo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="accessibility-bar" role="complementary" aria-label="Controles de Acessibilidade">
-        <div class="container accessibility-container">
-            <button id="btn-contrast" class="btn-acc" aria-label="Alternar Alto Contraste">Alto Contraste</button>
-            <div class="font-controls">
-                <button id="btn-font-decrease" class="btn-acc" aria-label="Diminuir tamanho do texto">A-</button>
-                <button id="btn-font-increase" class="btn-acc" aria-label="Aumentar tamanho do texto">A+</button>
-            </div>
+    <!-- Barra de Acessibilidade -->
+    <div class="accessibility-bar" aria-label="Ferramentas de Acessibilidade">
+        <div class="container acc-controls">
+            <span>Acessibilidade:</span>
+            <button id="btn-increase-font" title="Aumentar Fonte">A+</button>
+            <button id="btn-decrease-font" title="Diminuir Fonte">A-</button>
+            <button id="btn-toggle-contrast" title="Alternar Alto Contraste">Alto Contraste</button>
         </div>
     </div>
 
-    <header class="hero">
-        <div class="container">
-            <nav class="nav-bar">
-                <div class="logo">Agro<span>Paraná</span></div>
-                <a href="#contato" class="btn btn-secondary">Falar com Especialista</a>
+    <!-- Header / Nav -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">INK<span>GALLERY</span></a>
+            <nav class="nav">
+                <a href="#galeria">Galeria</a>
+                <a href="#diferenciais">Diferenciais</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#faq">FAQ</a>
             </nav>
-            
-            <div class="hero-content">
-                <span class="badge">Liderança no Campo Paranaense</span>
-                <h1>Transforme a produtividade da sua lavoura com tecnologia de ponta</h1>
-                <p>Consultoria especializada para produtores do Paraná. Maximize seu rendimento por hectare utilizando inteligência de dados, manejo de precisão e a força do maior polo agrícola do país.</p>
-                <div class="hero-cta-group">
-                    <a href="#contato" class="btn btn-primary">Diagnóstico Gratuito da Terra</a>
-                    <a href="#beneficios" class="btn btn-link">Conhecer Soluções &rarr;</a>
-                </div>
-            </div>
+            <a href="#agendamento" class="btn btn-primary">Agendar Sessão</a>
         </div>
     </header>
 
-    <section class="stats-section">
-        <div class="container stats-grid">
-            <div class="stat-card">
-                <h2>+150k</h2>
-                <p>Hectares Monitorados no PR</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="badge">Arte Na Pele & Exclusividade</span>
+                <h1>Sua história transformada em arte inesquecível.</h1>
+                <p>Projetos autorais e personalizados desenvolvidos por artistas premiados. Viva a experiência de ter uma obra única no seu corpo.</p>
+                <div class="hero-actions">
+                    <a href="#agendamento" class="btn btn-primary">Solicitar Orçamento Grátis</a>
+                    <a href="#galeria" class="btn btn-secondary">Ver Flash Tattoos</a>
+                </div>
             </div>
-            <div class="stat-card">
-                <h2>28%</h2>
-                <p>Média de Aumento de Produtividade</p>
-            </div>
-            <div class="stat-card">
-                <h2>12</h2>
-                <p>Anos de Tradição e Inovação</p>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=800&q=80" alt="Tatuador trabalhando em arte exclusiva" class="hero-img">
             </div>
         </div>
     </section>
 
-    <section id="beneficios" class="benefits-section">
+    <!-- Galeria Estilo Pinterest (Masonry Grid) -->
+    <section id="galeria" class="gallery-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Soluções Desenhadas para o Solo do Paraná</h2>
-                <p>Do Arenito Caiuá à Terra Roxa: estratégias personalizadas para o clima e relevo da nossa região.</p>
+            <div class="section-title">
+                <h2>Galeria Dinâmica</h2>
+                <p>Explore nossos trabalhos mais recentes. Salve suas ideias e inspire-se.</p>
             </div>
             
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🌱</div>
-                    <h3>Agricultura de Precisão</h3>
-                    <p>Mapeamento completo de nutrientes e aplicação em taxa variável para máxima economia de insumos.</p>
+            <!-- Filtros da Galeria -->
+            <div class="gallery-filters" id="gallery-filters">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="blackwork">Blackwork</button>
+                <button class="filter-btn" data-filter="realismo">Realismo</button>
+                <button class="filter-btn" data-filter="fineline">Fine Line</button>
+                <button class="filter-btn" data-filter="oriental">Oriental</button>
+            </div>
+
+            <!-- Grid de Pins do Pinterest -->
+            <div class="pinterest-grid" id="pinterest-grid">
+                <!-- Inserido dinamicamente via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section id="diferenciais" class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que a InkGallery?</h2>
+                <p>Segurança, higiene rigorosa e excelência artística do início ao fim.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Biossegurança Total</h3>
+                    <p>Materiais 100% descartáveis e esterilização com tecnologia hospitalar avançada.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">📊</div>
-                    <h3>Gestão de Safra Baseada em Dados</h3>
-                    <p>Previsibilidade financeira, controle de custos operacionais e relatórios de viabilidade em tempo real.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3>Projetos Autorais</h3>
+                    <p>Nada de cópias da internet. Desenvolvemos uma arte exclusiva com base no seu conceito.</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🛡️</div>
-                    <h3>Proteção e Manejo Biológico</h3>
-                    <p>Combate eficiente a pragas sazonais da região sul com as tecnologias mais sustentáveis do mercado.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Cicatrização Perfeita</h3>
+                    <p>Acompanhamento pós-tattoo completo com kit de cuidados e suporte dedicado.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials-section">
+    <!-- Carrossel de Depoimentos -->
+    <section id="depoimentos" class="testimonials-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Quem Confia na AgroParaná</h2>
-                <p>Resultados reais de produtores que transformaram suas colheitas.</p>
+            <div class="section-title">
+                <h2>O que dizem nossos clientes</h2>
+                <p>Mais de 3.000 clientes satisfeitos e com arte na pele.</p>
             </div>
-            
             <div class="carousel-container">
-                <div id="carousel-track" class="carousel-track">
-                    </div>
-                <div class="carousel-controls">
-                    <button id="carousel-prev" class="btn-carousel" aria-label="Depoimento anterior">&larr;</button>
-                    <button id="carousel-next" class="btn-carousel" aria-label="Próximo depoimento">&rarr;</button>
+                <button class="carousel-nav prev" id="carousel-prev" aria-label="Depoimento Anterior">❮</button>
+                <div class="carousel-wrapper" id="carousel-wrapper">
+                    <!-- Inserido dinamicamente via JS -->
                 </div>
+                <button class="carousel-nav next" id="carousel-next" aria-label="Próximo Depoimento">❯</button>
             </div>
         </div>
     </section>
 
-    <section class="faq-section">
+    <!-- Acordeão FAQ -->
+    <section id="faq" class="faq-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Perguntas Frequentes</h2>
-                <p>Tire suas dúvidas sobre nossa atuação no agronegócio paranaense.</p>
+            <div class="section-title">
+                <h2>Dúvidas Frequentes</h2>
+                <p>Tudo o que você precisa saber antes de fazer sua tatuagem.</p>
             </div>
-            
-            <div id="faq-accordion" class="accordion-container">
-                </div>
+            <div class="accordion" id="faq-accordion">
+                <!-- Inserido dinamicamente via JS -->
+            </div>
         </div>
     </section>
 
-    <section id="contato" class="contact-section">
-        <div class="container contact-grid">
-            <div class="contact-info">
-                <h2>Pronto para liderar a próxima safra?</h2>
-                <p>Agende uma consultoria inicial sem custos. Nossos engenheiros agrônomos analisam o histórico da sua área e desenham o plano de expansão ideal.</p>
-                <div class="contact-urgency">
-                    <p><strong>⚠️ Atenção:</strong> Vagas limitadas para o acompanhamento técnico da safra atual na região de Cascavel, Maringá e Londrina.</p>
-                </div>
-            </div>
-            
-            <div class="contact-form-wrapper">
-                <form id="lead-form" action="#" method="POST" class="contact-form">
+    <!-- Chamada para Ação / Formulário de Agendamento -->
+    <section id="agendamento" class="cta-section">
+        <div class="container cta-container">
+            <div class="cta-content">
+                <h2>Pronto para criar sua próxima arte?</h2>
+                <p>Preencha os dados abaixo e receba um orçamento personalizado no seu WhatsApp em poucas horas. Vagas limitadas para este mês!</p>
+                <form class="cta-form" onsubmit="event.preventDefault(); alert('Solicitação enviada com sucesso! Entraremos em contato via WhatsApp.');">
                     <div class="form-group">
-                        <label for="name">Nome Completo</label>
-                        <input type="text" id="name" name="name" required placeholder="Ex: Roberto Silva">
+                        <input type="text" placeholder="Seu Nome Completo" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">WhatsApp/Telefone</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="Ex: (44) 99999-9999">
+                        <input type="tel" placeholder="Seu WhatsApp com DDD" required>
                     </div>
                     <div class="form-group">
-                        <label for="location">Cidade/Região no PR</label>
-                        <input type="text" id="location" name="location" required placeholder="Ex: Toledo - PR">
+                        <select required>
+                            <option value="" disabled selected>Estilo Pretendido</option>
+                            <option value="blackwork">Blackwork</option>
+                            <option value="realismo">Realismo</option>
+                            <option value="fineline">Fine Line</option>
+                            <option value="oriental">Oriental</option>
+                            <option value="outro">Outro / Não sei ainda</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="hectares">Tamanho da Propriedade (Hectares)</label>
-                        <input type="number" id="hectares" name="hectares" required placeholder="Ex: 250">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Garantir Meu Diagnóstico Gratuito</button>
+                    <button type="submit" class="btn btn-primary btn-block">Garantir Meu Horário</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="main-footer">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container footer-content">
-            <p>&copy; 2026 AgroParaná Consultoria Agrícola Ltda. Todos os direitos reservados.</p>
-            <p>Desenvolvido para máxima conversão no agronegócio.</p>
+            <div class="logo">INK<span>GALLERY</span></div>
+            <p>© 2026 InkGallery Studio. Todos os direitos reservados. Arte e Biossegurança em primeiro lugar.</p>
         </div>
     </footer>
 
