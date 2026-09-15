@@ -1,183 +1,144 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================================================
-    // CONFIGURAÇÃO DE ACESSIBILIDADE (FONTE E CONTRASTE)
-    // ==========================================================================
-    let currentFontSize = 16;
-    const bodyElement = document.body;
-    const btnContrast = document.getElementById('btn-contrast');
-    const btnFontIncrease = document.getElementById('btn-font-increase');
-    const btnFontDecrease = document.getElementById('btn-font-decrease');
-
-    // Controle de Tamanho de Fonte
-    function setFontSize(size) {
-        if (size >= 12 && size <= 24) {
-            currentFontSize = size;
-            document.documentElement.style.fontSize = `${currentFontSize}px`;
-        }
-    }
-
-    btnFontIncrease.addEventListener('click', () => setFontSize(currentFontSize + 2));
-    btnFontDecrease.addEventListener('click', () => setFontSize(currentFontSize - 2));
-
-    // Modo de Alto Contraste
-    btnContrast.addEventListener('click', () => {
-        bodyElement.classList.toggle('high-contrast');
-    });
-
-    // ==========================================================================
-    // DATA BINDING - COMPONENTE DE DEPOIMENTOS (ARRAY DE OBJETOS)
-    // ==========================================================================
-    const testimonialsData = [
-        {
-            quote: "Aumentamos nossa colheita de soja em 24% na região de Toledo logo na primeira safra com o acompanhamento de dados da equipe. Excelente suporte local.",
-            author: "Gustavo Schmidt",
-            role: "Produtor Rural - Toledo, PR"
-        },
-        {
-            quote: "A gestão de custos que eles implementaram salvou nossa margem financeira durante a última estiagem. Essencial para quem quer escala e segurança.",
-            author: "Ricardo Bortolini",
-            role: "Grupo Agro Bortolini - Cascavel, PR"
-        },
-        {
-            quote: "A aplicação em taxa variável nos gerou uma economia de 18% nos insumos. O investimento se pagou em menos de 6 meses de projeto.",
-            author: "Mariana Costa",
-            role: "Fazenda Primavera - Londrina, PR"
-        }
-    ];
-
-    const carouselTrack = document.getElementById('carousel-track');
+    // --- 1. DADOS DOS COMPONENTES (Arrays de Objetos) ---
     
-    // Renderizar depoimentos
-    testimonialsData.forEach(item => {
-        const slide = document.createElement('div');
-        slide.classList.add('carousel-item');
-        slide.innerHTML = `
-            <div class="testimonial-card">
-                <p class="testimonial-quote">"${item.quote}"</p>
-                <div class="testimonial-author">
-                    <h4>${item.author}</h4>
-                    <p>${item.role}</p>
-                </div>
-            </div>
-        `;
-        carouselTrack.appendChild(slide);
-    });
-
-    // Lógica do Carrossel
-    let currentIndex = 0;
-    const nextBtn = document.getElementById('carousel-next');
-    const prevBtn = document.getElementById('carousel-prev');
-
-    function updateCarousel() {
-        const slideWidth = carouselTrack.querySelector('.carousel-item').clientWidth;
-        carouselTrack.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    }
-
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < testimonialsData.length - 1) {
-            currentIndex++;
-        } else {
-            currentIndex = 0; // Loop
-        }
-        updateCarousel();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-        } else {
-            currentIndex = testimonialsData.length - 1; // Loop
-        }
-        updateCarousel();
-    });
-
-    // Ajustar carrossel ao mudar o tamanho da tela
-    window.addEventListener('resize', updateCarousel);
-
-    // ==========================================================================
-    // DATA BINDING - COMPONENTE ACORDEÃO (ARRAY DE OBJETOS)
-    // ==========================================================================
-    const faqData = [
-        {
-            question: "Como funciona o diagnóstico gratuito da terra?",
-            answer: "Um de nossos engenheiros agrônomos realiza uma análise do histórico de produtividade e dos mapas existentes da sua propriedade. A partir disso, identificamos os principais gargalos e apresentamos um plano inicial de ação estruturado."
-        },
-        {
-            question: "A consultoria atende pequenas e médias propriedades?",
-            answer: "Sim. Nossos planos são modulares e escaláveis de acordo com o tamanho do seu hectare. Atendemos desde médios produtores focados em expansão tecnológica até grandes grupos agrícolas do Paraná."
-        },
-        {
-            question: "Quais culturas possuem suporte especializado?",
-            answer: "Temos vasta experiência de mercado e foco absoluto na cadeia produtiva do Paraná, com ênfase em Soja, Milho, Trigo e culturas de cobertura de inverno integradas."
-        },
-        {
-            question: "Em quanto tempo vejo os primeiros resultados operacionais?",
-            answer: "A otimização de insumos e processos de gestão são perceptíveis já nos primeiros 60 dias de planejamento e execução assistida."
-        }
+    const pinsData = [
+        { title: "Crânio e Rosa Blackwork", style: "blackwork", img: "https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&w=600&q=80" },
+        { title: "Leão Geométrico", style: "fineline", img: "https://images.unsplash.com/photo-1542382257-80dedb725088?auto=format&fit=crop&w=600&q=80" },
+        { title: "Dragão Oriental Tradicional", style: "oriental", img: "https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=600&q=80" },
+        { title: "Retrato Realista", style: "realismo", img: "https://images.unsplash.com/photo-1590246814884-570aafd3346f?auto=format&fit=crop&w=600&q=80" },
+        { title: "Serpente Dark", style: "blackwork", img: "https://images.unsplash.com/photo-1565058382822-2616f8cc59c1?auto=format&fit=crop&w=600&q=80" },
+        { title: "Botânica Delicada", style: "fineline", img: "https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=600&q=80" }
     ];
 
-    const faqAccordion = document.getElementById('faq-accordion');
+    const testimonialsData = [
+        { text: "A melhor experiência de tattoo da minha vida! O estúdio é impecável e a arte ficou infinitamente melhor do que eu imaginava.", author: "Carlos Eduardo" },
+        { text: "Atendimento incrível e traços extremamente finos e precisos. A cicatrização foi super rápida!", author: "Mariana Silva" },
+        { text: "Profissionalismo do início ao fim. O sistema de agendamento e criação do projeto autoral facilitou tudo.", author: "Lucas Mendes" }
+    ];
 
-    // Renderizar Acordeão
-    faqData.forEach((item, index) => {
-        const accordionItem = document.createElement('div');
-        accordionItem.classList.add('accordion-item');
+    const faqData = [
+        { question: "Como funciona o orçamento e agendamento?", answer: "Você preenche o formulário informando sua ideia, e nossa equipe entra em contato via WhatsApp com uma estimativa e opções de datas." },
+        { question: "Os materiais utilizados são seguros?", answer: "Sim! Utilizamos exclusivamente materiais 100% descartáveis e tintas regulamentadas pela ANVISA." },
+        { question: "Vocês fazem cobertura de tatuagens antigas (Cover-up)?", answer: "Sim! Nossos especialistas avaliam a tattoo antiga e criam um projeto exclusivo capaz de cobri-la perfeitamente." }
+    ];
+
+    // --- 2. RENDERIZAÇÃO DA GALERIA PINTEREST ---
+    
+    const galleryGrid = document.getElementById('pinterest-grid');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function renderGallery(filter = 'todos') {
+        galleryGrid.innerHTML = '';
+        const filteredData = filter === 'todos' ? pinsData : pinsData.filter(pin => pin.style === filter);
         
-        accordionItem.innerHTML = `
-            <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-${index}">
-                <span>${item.question}</span>
-                <span class="accordion-icon">+</span>
-            </button>
-            <div id="faq-content-${index}" class="accordion-content">
-                <p>${item.answer}</p>
-            </div>
-        `;
-        
-        faqAccordion.appendChild(accordionItem);
-    });
+        filteredData.forEach(pin => {
+            const card = document.createElement('div');
+            card.className = 'pin-card';
+            card.innerHTML = `
+                <img src="${pin.img}" alt="${pin.title}">
+                <div class="pin-overlay">
+                    <button class="pin-save-btn">Salvar Ideia</button>
+                    <div class="pin-info">
+                        <h4>${pin.title}</h4>
+                        <span>Estilo: ${pin.style.toUpperCase()}</span>
+                    </div>
+                </div>
+            `;
+            galleryGrid.appendChild(card);
+        });
+    }
 
-    // Lógica de Ativação do Acordeão
-    const headers = faqAccordion.querySelectorAll('.accordion-header');
+    renderGallery();
 
-    headers.forEach(header => {
-        header.addEventListener('click', function() {
-            const currentItem = this.parentElement;
-            const content = this.nextElementSibling;
-            const isOpen = currentItem.classList.contains('active');
-
-            // Fecha todos os itens abertos
-            faqAccordion.querySelectorAll('.accordion-item').forEach(item => {
-                item.classList.remove('active');
-                item.querySelector('.accordion-content').style.maxHeight = null;
-                item.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
-            });
-
-            // Se o item clicado não estava aberto, abre-o
-            if (!isOpen) {
-                currentItem.classList.add('active');
-                content.style.maxHeight = content.scrollHeight + "px";
-                this.setAttribute('aria-expanded', 'true');
-            }
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderGallery(btn.dataset.filter);
         });
     });
 
-    // ==========================================================================
-    // CAPTURA DE LEADS (EVENTO DO FORMULÁRIO)
-    // ==========================================================================
-    const leadForm = document.getElementById('lead-form');
-    leadForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            location: document.getElementById('location').value,
-            hectares: document.getElementById('hectares').value
-        };
+    // --- 3. CARROSSEL DE DEPOIMENTOS ---
 
-        // Simulação de envio com disparo visual de alta fidelidade
-        alert(`Obrigado, ${formData.name}! Seus dados foram enviados com sucesso para a equipe técnica da AgroParaná. Entraremos em contato em até 24 horas.`);
-        leadForm.reset();
+    const carouselWrapper = document.getElementById('carousel-wrapper');
+    let currentSlide = 0;
+
+    function renderTestimonials() {
+        carouselWrapper.innerHTML = testimonialsData.map(item => `
+            <div class="testimonial-card">
+                <p class="testimonial-text">"${item.text}"</p>
+                <div class="testimonial-author">- ${item.author}</div>
+            </div>
+        `).join('');
+    }
+
+    renderTestimonials();
+
+    document.getElementById('carousel-next').addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % testimonialsData.length;
+        updateCarousel();
+    });
+
+    document.getElementById('carousel-prev').addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + testimonialsData.length) % testimonialsData.length;
+        updateCarousel();
+    });
+
+    function updateCarousel() {
+        carouselWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // --- 4. ACORDEÃO FAQ ---
+
+    const faqAccordion = document.getElementById('faq-accordion');
+
+    function renderFAQ() {
+        faqAccordion.innerHTML = faqData.map((item, index) => `
+            <div class="accordion-item ${index === 0 ? 'active' : ''}">
+                <button class="accordion-header">
+                    <span>${item.question}</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>${item.answer}</p>
+                </div>
+            </div>
+        `).join('');
+
+        const headers = faqAccordion.querySelectorAll('.accordion-header');
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    }
+
+    renderFAQ();
+
+    // --- 5. ACESSIBILIDADE (FONTE E CONTRASTE COM LIMITES) ---
+
+    let currentFontSize = 16;
+    const btnIncrease = document.getElementById('btn-increase-font');
+    const btnDecrease = document.getElementById('btn-decrease-font');
+    const btnContrast = document.getElementById('btn-toggle-contrast');
+
+    btnIncrease.addEventListener('click', () => {
+        if (currentFontSize < 24) {
+            currentFontSize += 2;
+            document.documentElement.style.fontSize = `${currentFontSize}px`;
+        }
+    });
+
+    btnDecrease.addEventListener('click', () => {
+        if (currentFontSize > 12) {
+            currentFontSize -= 2;
+            document.documentElement.style.fontSize = `${currentFontSize}px`;
+        }
+    });
+
+    btnContrast.addEventListener('click', () => {
+        document.body.classList.toggle('high-contrast');
     });
 });
